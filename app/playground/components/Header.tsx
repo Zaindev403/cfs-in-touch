@@ -1,9 +1,12 @@
 import Image from 'next/image';
-
+import { useRouter } from 'next/navigation';
 export function PlaygroundHeader() {
-  return (
+  
+    const router = useRouter();
+  
+    return (
     <header className="flex items-center justify-between border-b border-primary/20 bg-terminal-black/80 backdrop-blur-md px-4 md:px-8 py-3 z-50">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3" onClick={() => router.push('/')}>
         {/* Logo Replacement */}
         <div className="relative size-10 md:size-12 shrink-0">
           <Image 

@@ -2,12 +2,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
     // 1. Add a mounted state
     const [mounted, setMounted] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         // 2. Set mounted to true once the browser is ready
@@ -79,6 +82,7 @@ export default function Header() {
                         </a>
                     ))}
                     <motion.button 
+                        onClick={() => router.push('/playground')}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="rounded-full bg-primary px-5 py-2 text-sm font-bold text-black shadow-lg shadow-primary/20"

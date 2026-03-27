@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Git Playground | Motion-U Academy",
+  title: "Motion-U | Git Playground",
   description: "Interactive Git learning environment",
 };
 

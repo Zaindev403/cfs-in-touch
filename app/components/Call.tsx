@@ -1,7 +1,11 @@
 "use client";
 import { motion, Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Call() {
+
+    const router = useRouter();
+
     // Animation for the card rising up
     const cardVariants: Variants = {
         hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -41,6 +45,7 @@ export default function Call() {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <motion.button 
+                            onClick={() => router.push('/playground')}
                             whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 210, 255, 0.5)" }}
                             whileTap={{ scale: 0.95 }}
                             className="w-full sm:w-auto rounded-xl bg-primary px-8 sm:px-12 py-4 sm:py-5 text-lg font-bold text-black transition-colors"
