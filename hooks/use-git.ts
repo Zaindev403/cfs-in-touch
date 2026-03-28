@@ -90,6 +90,51 @@ export const useGit = () => {
           status += "nothing to commit, working tree clean";
         }
         return { res: status, type: 'info' };
+      
+      case 'merge':
+        const targetBranch = args[0];
+        
+        // 1. Validation
+        if (!targetBranch) return { res: "fatal: specify a branch to merge", type: "error" };
+        if (targetBranch === branch) return { res: "Already up to date.", type: "info" };
+        if (!branches.includes(targetBranch)) {
+          return { res: `merge: ${targetBranch} - not something we can merge`, type: "error" };
+        }
+
+        // 2. Identify commits for both branches
+        const currentCommits = commits.filter(c => c.branch === branch);
+        const targetCommits = commits.filter(c => c.branch === targetBranch);
+
+        if (targetCommits.length === 0) return { res: "Already up to date.", type: "info" };
+
+        // 3. Simple Merge Logic: Bring target commits into current branch
+        // Note: In a real Git environment, this creates a "Merge Commit" 
+        // or fast-forwards. Here, we'll simulate the "bringing over" of commits.
+        
+        const existingHashes = new Set(currentCommits.map(c => c.hash));
+        const commitsToMerge = targetCommits
+          .filter(c => !existingHashes.has(c.hash))
+          .map(c => ({ ...c, branch })); // Re-tag them to the current branch
+
+        if (commitsToMerge.length === 0) {
+          return { res: "Already up to date.", type: "info" };
+        }
+
+        // Create a specific Merge Commit (The "Three-Way" simulation)
+        const mergeHash = Math.random().toString(16).substring(2, 8);
+        const mergeCommit: Commit = { 
+          hash: mergeHash, 
+          msg: `Merge branch '${targetBranch}' into ${branch}`, 
+          branch 
+        };
+
+        setCommits([mergeCommit, ...commitsToMerge, ...commits]);
+        
+        return { 
+          res: `Updating ${currentCommits[0]?.hash || 'initial'}..${targetCommits[0].hash}\nFast-forward\nMerged ${commitsToMerge.length} commits.`, 
+          type: 'success', 
+          action: 'MERGE' 
+        };
 
       default:
         return { res: `git: '${sub}' is not a git command. See 'help'.`, type: 'error' };
