@@ -8,13 +8,11 @@ import Call from "./components/Call";
 export default function Home() {
   return (
     <>
-      <Header/>
       <main className="flex-1 pt-20 md:pt-24">
         <Hero/>
         <ProgramOverview/>
         <GitCurriculum/>
         <Call/>
-        <Footer/>
       </main>
     </>
   );

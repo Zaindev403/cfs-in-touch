@@ -1,46 +1,105 @@
 @import "tailwindcss";
 
+
+
 @theme {
+
   --color-primary: #00d2ff;
+
   --color-secondary: #0052d4;
+
   --color-background-dark: #050505;
+
   --color-terminal-black: #0a0a0a;
+
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #27272a; /* zinc-800 */
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46; /* zinc-700 */
+}
+
+
 
 @utility glow-border {
+
   position: relative;
+
   &::after {
+
     content: "";
+
     position: absolute;
+
     inset: -1px;
+
     background: linear-gradient(45deg, var(--color-primary), transparent, var(--color-secondary));
+
     z-index: -1;
+
     border-radius: inherit;
+
     opacity: 0.2;
+
   }
+
 }
+
+
 
 @utility neon-text-glow {
+
   text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+
 }
+
+
 
 @utility neon-box-glow {
+
   box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+
 }
+
+
 
 @utility custom-scrollbar {
+
   &::-webkit-scrollbar { width: 4px; }
-  &::-webkit-scrollbar-thumb { 
-    background: #1a1a1a; 
-    border-radius: 10px; 
+
+  &::-webkit-scrollbar-thumb {
+
+    background: #1a1a1a;
+
+    border-radius: 10px;
+
   }
+
 }
+
+
 
 @keyframes fade-up {
+
   from { opacity: 0; transform: translateY(30px); }
+
   to { opacity: 1; transform: translateY(0); }
+
 }
 
+
+
 @utility animate-fade-up {
+
   animation: fade-up 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
 }

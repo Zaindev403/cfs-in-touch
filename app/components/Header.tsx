@@ -54,7 +54,7 @@ export default function Header() {
                 className="mx-auto flex items-center justify-between rounded-2xl px-6 py-2 sm:py-3 pointer-events-auto shadow-2xl"
             >
                 {/* Logo Section */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" onClick={() => router.push('/')}>
                     <div className="relative h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-lg">
                         <Image 
                             src="/logo.png" 
@@ -72,10 +72,10 @@ export default function Header() {
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {["Overview", "Curriculum", "Team"].map((item) => (
+                    {["overview", "syllabus", "Team"].map((item) => (
                         <a 
                             key={item} 
-                            href={`#${item.toLowerCase()}`} 
+                            href={`/${item.toLowerCase()}`} 
                             className="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
                         >
                             {item}
@@ -113,8 +113,8 @@ export default function Header() {
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         className="md:hidden absolute left-4 right-4 top-24 bg-slate-900/95 backdrop-blur-xl border border-primary/30 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl pointer-events-auto"
                     >
-                        <a className="text-lg font-medium text-slate-200" href="#">Overview</a>
-                        <a className="text-lg font-medium text-slate-200" href="#">Curriculum</a>
+                        <a className="text-lg font-medium text-slate-200" href="/">Overview</a>
+                        <a className="text-lg font-medium text-slate-200" href="/syllabus">Curriculum</a>
                         <a className="text-lg font-medium text-slate-200" href="#">Team</a>
                         <button className="w-full rounded-xl bg-primary py-3 text-base font-bold text-black">
                             Enter Playground
