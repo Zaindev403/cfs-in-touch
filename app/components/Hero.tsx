@@ -41,12 +41,12 @@ export default function Hero() {
 
                         <div className="flex flex-wrap gap-4">
                             <motion.button 
-                                onClick={() => router.push('/playground')}
+                                onClick={() => location.href="https://docs.google.com/forms/d/e/1FAIpQLSc8lZgwMt7g4oQxVyo0JvvmuLLr3MUnTQSIOPwCPj93SpEuww/viewform?usp=dialog"}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="rounded-xl bg-primary px-8 py-4 text-lg font-bold text-black shadow-[0_0_20px_rgba(0,210,255,0.3)]"
                             >
-                                Start Learning Now
+                                Register Now
                             </motion.button>
                         </div>
                     </motion.div>
