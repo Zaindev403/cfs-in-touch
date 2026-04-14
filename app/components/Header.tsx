@@ -72,10 +72,10 @@ export default function Header() {
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {["syllabus", "activity", "Team"].map((item) => (
+                    {["Syllabus", "Activity", "Team"].map((item) => (
                         <a 
                             key={item} 
-                            href={`/${item.toLowerCase()}`} 
+                            href={`/${item}`} 
                             className="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
                         >
                             {item}
